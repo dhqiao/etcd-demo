@@ -25,7 +25,7 @@ func main() {
 	defer cli.Close()
 
 	// 设置 key1 的值为 value1
-	key1, value1 := "key", `value1`
+	key1, value1 := "key1", `value1`
 	if resp, err := cli.Put(context.TODO(), key1, value1); err != nil {
 		log.Fatal(err)
 	} else {
@@ -40,7 +40,7 @@ func main() {
 		log.Println(resp)
 	}
 
-	if resp, err := cli.Get(context.TODO(), key1, clientv3.WithRange("key")); err != nil {
+	if resp, err := cli.Get(context.TODO(), key1, clientv3.WithRange("key1")); err != nil {
 		log.Println(err)
 	} else {
 		log.Println(resp.Header)
