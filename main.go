@@ -25,7 +25,7 @@ func main() {
 	defer cli.Close()
 
 	// 设置 key1 的值为 value1
-	key1, value1 := "key1", `value1`
+	key1, value1 := "key1/subKey", `value1`
 	if resp, err := cli.Put(context.TODO(), key1, value1); err != nil {
 		log.Fatal(err)
 	} else {
