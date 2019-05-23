@@ -46,7 +46,8 @@ func main() {
 		log.Println(resp.Header)
 		log.Println(resp.Count)
 
-		log.Println(resp.Kvs[0].Key,
+		log.Println(resp.Kvs[0],
+			resp.Kvs[0].Key,
 			resp.Kvs[0].Value,
 			resp.Kvs[0].CreateRevision,
 			resp.Kvs[0].Lease,
