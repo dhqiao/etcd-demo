@@ -39,4 +39,10 @@ func main() {
 	} else {
 		log.Println(resp)
 	}
+
+	if resp, err := cli.Get(context.TODO(), key1, clientv3.WithPrevKV()); err != nil {
+		log.Println(err)
+	} else {
+		log.Println(resp)
+	}
 }
