@@ -40,13 +40,19 @@ func main() {
 		log.Println(resp)
 	}
 
-	if resp, err := cli.Get(context.TODO(), key1, clientv3.WithRange("key1")); err != nil {
+	if resp, err := cli.Get(context.TODO(), key1); err != nil {
 		log.Println(err)
 	} else {
 		log.Println(resp.Header)
 		log.Println(resp.Count)
 
-		log.Println(resp.Kvs)
+		log.Println(resp.Kvs[0].Key,
+			resp.Kvs[0].Value,
+			resp.Kvs[0].CreateRevision,
+			resp.Kvs[0].Lease,
+			resp.Kvs[0].ModRevision,
+			resp.Kvs[0].Version,
+			resp.Kvs[0].Size())
 		log.Println(resp.More)
 
 	}
