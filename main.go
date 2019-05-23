@@ -14,6 +14,15 @@ var (
 	endpoints      = []string{"localhost:2379"}
 )
 
+type ETCD struct {
+	Key string
+	Create_revision int32
+	Mod_revision int32
+	Version int32
+	Value string
+}
+
+
 func main() {
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   endpoints,
@@ -46,15 +55,18 @@ func main() {
 		log.Println(resp.Header)
 		log.Println(resp.Count)
 
+
+
 		log.Println(resp.Kvs[0],
-			resp.Kvs[0].Key,
-			resp.Kvs[0].Value,
+			string(resp.Kvs[0].Key),
+			string(resp.Kvs[0].Value),
 			resp.Kvs[0].CreateRevision,
 			resp.Kvs[0].Lease,
 			resp.Kvs[0].ModRevision,
 			resp.Kvs[0].Version,
 			resp.Kvs[0].Size())
 		log.Println(resp.More)
+		
 
 	}
 }
