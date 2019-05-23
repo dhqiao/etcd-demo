@@ -43,6 +43,11 @@ func main() {
 	if resp, err := cli.Get(context.TODO(), key1); err != nil {
 		log.Println(err)
 	} else {
-		log.Println(resp)
+		log.Println(resp.Header)
+		log.Println(resp.Count)
+
+		log.Println(resp.Kvs)
+		log.Println(resp.More)
+
 	}
 }
